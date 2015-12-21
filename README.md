@@ -1,13 +1,41 @@
-# snspy 
+# About This Fork
+
+This fork supports python 2.7 and python 3+
+
+You can install it by
+
+```bash
+pip install git+git://github.com/TylerTemp/sinaweibopy.git
+```
+
+# About Sina Weibo OAuth 2 API Python SDK
+
+This software is a 100% pure Python interface to Sina Weibo API
+which provides OAuth2.0 authentication and API calling wrapper.
+
+You can find docs and source code at:
+
+<http://michaelliao.github.com/sinaweibopy/>
+
+Developed and mantained by Michael Liao.
+Please feel free to report bugs and your suggestions at:
+
+<https://github.com/michaelliao/sinaweibopy>
+
+For more information, please refer to the wiki:
+
+<https://github.com/michaelliao/sinaweibopy/wiki/OAuth2-HOWTO>
+
+# About snspy
 
 SNSPY is a stand-alone Python script which provides
 
-* OAuth2.0 authentication
-* API calling wrapper
+*   OAuth2.0 authentication
+*   API calling wrapper
 
 for any social network providers.
 
-http://michaelliao.github.com/sinaweibopy/
+<http://michaelliao.github.com/sinaweibopy/>
 
 Developed and mantained by Michael Liao. Please feel free to report bugs and
 your suggestions at [here](https://github.com/michaelliao/sinaweibopy).
@@ -28,11 +56,11 @@ social network APIs are handled by its `mixin`.
 
 You need to register your OAuth 2 application on the social network you choose:
 
-[Tweeter]()
-[Facebook]()
-[LinkedIn]()
-[Sina Weibo]()
-[QQ Connect]()
+[Tweeter](https://dev.twitter.com/)
+[Facebook](https://developers.facebook.com/)
+[LinkedIn](https://developer.linkedin.com/)
+[Sina Weibo](http://open.weibo.com/)
+[QQ Connect](http://connect.qq.com/)
 
 After setting up your account and registering for an application, you will receive 
 `YOUR_APP_KEY` and `YOUR_APP_SECRET`. Together with `YOUR_CALLBACK_URL`, these are 
@@ -113,21 +141,20 @@ the request method with all the necessary parameters excluding `source` and
 ```python
 r = client.statuses.user_timeline.get(uid=SOME_ID)
 for st in r.statuses:
-    print st.text
+    print(st.text)
 ```
 
 If the request method is `POST`, then it should be something like the following:
 
 ```python
-r = client.statuses.update.post(status=u'test weibo')
+r = client.statuses.update.post(status='test weibo')
 ```
 
 And, as for uploading pictures:
 
 ```python
-f = open('/Users/michael/test.png', 'rb')
-r = client.statuses.upload.post(status=u'test weibo with picture', pic=f)
-f.close()  # you need to do this manually
+with open('/Users/michael/test.png', 'rb') as f:
+    r = client.statuses.upload.post(status='test weibo with picture', pic=f)
 ```
 
 Please notice that what is uploaded must be a file-like object. str can be

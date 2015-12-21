@@ -45,3 +45,11 @@ Thumbs.db
 dist
 MANIFEST
 
+# PyCharm
+.idea
+
+# pyenv
+.python-version
+
+# pip
+sinaweibopy.egg-info
